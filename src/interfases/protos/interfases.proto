@@ -1,0 +1,22 @@
+syntax = "proto3";
+
+import "google/protobuf/empty.proto";
+import "google/api/annotations.proto";
+
+package Interfases;
+
+option go_package = "./Interfases";
+
+message Coordinate {
+	int32 x = 1;
+	int32 y = 2;
+}
+
+service LocationTracker {
+	rpc getCoordinate(google.protobuf.Empty) returns (Coordinate){
+		option (google.api.http) = {
+			get: "/coordinates"
+		};
+	}
+}
+
